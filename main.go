@@ -64,9 +64,9 @@ func main() {
 		handler.Use(limit_middleware)
 	}
 	handler.Use(secret_auth)
-	// Proxy all POST requests to https://apps.openai.com/api/
+	// Proxy all POST requests
 	handler.POST("/api/:path/", handlers.Proxy)
-	// Proxy all GET requests to https://apps.openai.com/api/
+	// Proxy all GET requests
 	handler.GET("/api/:path/", handlers.Proxy)
 
 	endless.ListenAndServe("127.0.0.1:"+PORT, handler)
